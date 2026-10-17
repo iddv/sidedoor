@@ -1,0 +1,47 @@
+# .github/bears.yml — how this repository is maintained. Read by bears on every poll;
+# followed by any agent that reads AGENTS.md. Change it in a PR like any other file.
+bears: 1                      # schema version
+
+status: maintained            # maintained | as-is | archived
+                              # as-is: triage still labels and answers; nothing is fixed.
+                              # archived: bears only posts one comment pointing here, then
+                              # leaves the repo alone (and the owner archives it on GitHub).
+
+triage:
+  enabled: true               # classify new issues and PRs, label them, post one comment
+  close_duplicates: false     # true: close an obvious duplicate as "not planned" with the link
+  answer_questions: true      # reply to `question` issues from the docs (no code, no tools)
+
+revise:
+  trigger: go                 # go: only issues labelled go | owner: also issues the owner
+                              #     opened once triaged (bears adds go itself) | off
+  auto_go: off                # off | patch: bears adds `go` to bug/security issues at p1 or p2
+                              #     opened by the owner or a collaborator with write access
+  kinds: ["bug", "security", "docs", "dependency"]   # feature needs an explicit go from the owner
+  max_attempts: 2             # failure comments before `needs-you`
+  lease_hours: 6
+  max_usd: null               # per revise; null = no cap; the loop's maintain.max_usd
+                              # applies as well when set (the smaller wins)
+  models: {}                  # per-stage overrides, same roles as Settings › Models; {} = default
+
+merge:
+  bears_patch: never          # never | ci-green: bears merges its own fix PR (squash), one
+                              #   per poll, oldest first, when every check on its head commit
+                              #   passed (at least one: no CI, no merge), it is up to date with
+                              #   main, its kind is in merge.kinds and its diff is at most
+                              #   merge.max_lines. Never merged by bears, whatever this says: a
+                              #   `feature`; a PR touching .github/, LICENSE, NOTICE or a
+                              #   lockfile; one labelled `hold` or `needs-you`; one with changes
+                              #   requested; one you pushed commits to; anyone else's PR.
+  kinds: ["bug", "docs"]         # of bug | docs | security | dependency (feature: never)
+  max_lines: 80
+  dependabot: never           # never | patch | minor: merge Dependabot PRs of that level
+                              #   when CI is green (Actions bumps are `patch`)
+
+release:
+  on_merge: patch             # patch | minor | off. bug/security/docs/dependency → patch;
+                              #   feature → minor. Tag + GitHub release with generated notes.
+  prefix: v
+
+spend:
+  note: ""                    # free text shown in the bears UI next to this repo

@@ -1,0 +1,2 @@
+[console_scripts]
+sidedoor = sidedoor.cli:main

@@ -1,0 +1,32 @@
+# The label scheme bears and any agent follow (AGENTS.md › Maintenance protocol).
+# Synced by .github/workflows/labels.yml and `brb maintain labels`: created or
+# updated, never deleted. One label per line; edit it here, in a pull request.
+labels:
+  # kind
+  - {"name": "bug", "color": "0052cc", "description": "Something documented does not work"}
+  - {"name": "feature", "color": "1d76db", "description": "Something new or changed"}
+  - {"name": "question", "color": "5ea1e8", "description": "A question; no code expected"}
+  - {"name": "security", "color": "003d99", "description": "A security weakness (report serious ones privately)"}
+  - {"name": "dependency", "color": "7aa6e8", "description": "A dependency or Actions update"}
+  - {"name": "docs", "color": "a2c4f0", "description": "README, AGENTS.md or SECURITY text"}
+  # flow
+  - {"name": "triage", "color": "fef2c0", "description": "Nobody has classified this yet"}
+  - {"name": "needs-info", "color": "fbca04", "description": "Waiting for the reporter to answer a question"}
+  - {"name": "go", "color": "e99c1b", "description": "Approved: money may be spent fixing this"}
+  - {"name": "needs-you", "color": "d93f0b", "description": "bears tried and could not; the owner must look"}
+  # claim
+  - {"name": "claim:bears", "color": "5319e7", "description": "bears is working on this (see its lease comment)"}
+  - {"name": "claim:agent", "color": "8a63d2", "description": "Another agent is working on this (see its comment)"}
+  # priority
+  - {"name": "p1", "color": "b60205", "description": "Now: data loss, security, install broken"}
+  - {"name": "p2", "color": "e11d21", "description": "Soon: a documented flow is wrong"}
+  - {"name": "p3", "color": "f9a5a5", "description": "Later: cosmetic, nice to have"}
+  # outcome
+  - {"name": "duplicate", "color": "cfd3d7", "description": "Same as another issue (a comment names it)"}
+  - {"name": "wontfix", "color": "bfbfbf", "description": "Not planned, by decision"}
+  - {"name": "cannot-reproduce", "color": "d4d4d4", "description": "A failing test could not be written"}
+  - {"name": "upstream", "color": "c5c5c5", "description": "A Python or platform problem"}
+  # learning
+  - {"name": "lesson", "color": "0e8a16", "description": "A user-found bug the build's checks missed"}
+  # pr
+  - {"name": "bears", "color": "006b75", "description": "A pull request opened by bears"}

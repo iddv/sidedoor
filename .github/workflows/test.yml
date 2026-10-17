@@ -1,0 +1,21 @@
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install (as in the README)
+        run: |
+          ./install.sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Install pytest
+        run: python -m pip install pytest
+      - name: Unit and end-to-end tests
+        run: python -m unittest discover -s tests -t .
+      - name: Acceptance tests
+        run: |
+          if [ -d tests/acceptance ]; then python -m pytest tests/acceptance; fi
